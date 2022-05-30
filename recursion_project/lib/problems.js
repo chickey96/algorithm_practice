@@ -30,7 +30,7 @@ function lucasNumber(n, memo={}) {
     if(n == 0) { return 2; }
     if(n == 1) { return 1; }
 
-    memo[n] = (lucasNumber(n - 1) + lucasNumber(n - 2));
+    memo[n] = (lucasNumber(n - 1, memo) + lucasNumber(n - 2, memo));
     
     return memo[n];
 }

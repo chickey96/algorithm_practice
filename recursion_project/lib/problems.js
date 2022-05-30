@@ -172,7 +172,19 @@ function flatten(data) {
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
+    let curr_directory_level_keys = Object.keys(directories)
+    if(curr_directory_level_keys == null) { return false; }
 
+    for (const key of curr_directory_level_keys) {
+        if(key.slice(0, 1) === '/') {
+            let dfs = fileFinder(directories[key], targetFile) 
+            if(dfs) { return true; }
+        } else if(key === targetFile) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 

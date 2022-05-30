@@ -16,6 +16,8 @@
 // lucasNumber(3)   // => 4
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
+
+// time complexity: ~O(2^n)
 function lucasNumber(n) {
     if(n == 0) { return 2; }
     if(n == 1) { return 1; }
@@ -35,6 +37,8 @@ function lucasNumber(n) {
 // sumArray([5])            // => 5
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
+
+// time complexity: O(n)
 function sumArray(array) {
     if(array.length == 0) { return 0; }
     
@@ -53,6 +57,8 @@ function sumArray(array) {
 // reverseString("c")           // => "c"
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
+
+// time complexity: O(n^2) => n recursive calls, slice each call (O(n))
 function reverseString(str) {
     if(str.length <= 1) { return str; }
 
@@ -76,6 +82,8 @@ function reverseString(str) {
 // pow(2, 5)    // => 32
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
+
+// time complexity: O(n)
 function pow(base, exponent) {
     if(exponent == 0) { return 1; }
     

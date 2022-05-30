@@ -172,13 +172,13 @@ function flatten(data) {
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
-    let curr_directory_level_keys = Object.keys(directories)
-    if(curr_directory_level_keys == null) { return false; }
+    if(directories == null) { return false; }
 
-    for (const key of curr_directory_level_keys) {
+    for (let key in directories) {
         if(key.slice(0, 1) === '/') {
-            let dfs = fileFinder(directories[key], targetFile) 
-            if(dfs) { return true; }
+            if(fileFinder(directories[key], targetFile)) {
+                return true;
+            } 
         } else if(key === targetFile) {
             return true;
         }
@@ -199,15 +199,13 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
     if(directories === null) { return null; }
-    const curr_dir_level = Object.keys(directories)
     
-    for (const key of curr_dir_level) {
-        
+    for (const key in directories) {
         if(key === targetFile) {
             return ('/' + key)
         } else {
             let search = pathFinder(directories[key], targetFile)
-            
+
             if(search) { return key + search; }
         }
     }

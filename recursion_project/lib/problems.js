@@ -198,7 +198,21 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+    if(directories === null) { return null; }
+    const curr_dir_level = Object.keys(directories)
+    
+    for (const key of curr_dir_level) {
+        
+        if(key === targetFile) {
+            return ('/' + key)
+        } else {
+            let search = pathFinder(directories[key], targetFile)
+            
+            if(search) { return key + search; }
+        }
+    }
 
+    return null;
 }
 
 

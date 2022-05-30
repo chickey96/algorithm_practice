@@ -18,11 +18,22 @@
 // lucasNumber(9)   // => 76
 
 // time complexity: ~O(2^n)
-function lucasNumber(n) {
+// function lucasNumber(n) {
+//     if(n == 0) { return 2; }
+//     if(n == 1) { return 1; }
+
+//     return (lucasNumber(n - 1) + lucasNumber(n - 2));
+// }
+// use memoization
+function lucasNumber(n, memo={}) {
+    if(memo[n]) { return memo[n] }
     if(n == 0) { return 2; }
     if(n == 1) { return 1; }
 
-    return (lucasNumber(n - 1) + lucasNumber(n - 2));
+
+    let solution = (lucasNumber(n - 1) + lucasNumber(n - 2));
+    memo[n] = solution;
+    return solution;
 }
 
 

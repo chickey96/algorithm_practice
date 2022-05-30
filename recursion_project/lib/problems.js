@@ -30,10 +30,9 @@ function lucasNumber(n, memo={}) {
     if(n == 0) { return 2; }
     if(n == 1) { return 1; }
 
-
-    let solution = (lucasNumber(n - 1) + lucasNumber(n - 2));
-    memo[n] = solution;
-    return solution;
+    memo[n] = (lucasNumber(n - 1) + lucasNumber(n - 2));
+    
+    return memo[n];
 }
 
 

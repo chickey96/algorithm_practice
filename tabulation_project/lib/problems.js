@@ -20,7 +20,31 @@
 // stepper([3, 1, 0, 5, 10]);           // => true, because we can step through elements 3 -> 5 -> 10
 // stepper([3, 4, 1, 0, 10]);           // => true, because we can step through elements 3 -> 4 -> 10
 // stepper([2, 3, 1, 1, 0, 4, 7, 8])    // => false, there is no way to step to the end
+
+// memoization
 function stepper(nums) {
+    // return memoizationStepper(nums)
+
+}
+
+function memoizationStepper(nums, solved={}) {
+    if (nums.length == 0) { return true; }
+    if (nums in solved) { return solved[nums]; }
+
+    let possible = false;
+
+    for (let i = 1; i <= nums[0]; i++) {
+        if (memoizationStepper(nums.slice(i), solved)) {
+            possible = true;
+            break;
+        }
+    }
+
+    solved[nums] = possible;
+    return solved[nums]
+}
+
+function tabulationStepper(nums) {
 
 }
 

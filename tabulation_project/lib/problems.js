@@ -23,8 +23,8 @@
 
 // memoization
 function stepper(nums) {
-    // return memoizationStepper(nums)
-
+    
+    return memoizationStepper(nums) && tabulationStepper(nums)
 }
 
 function memoizationStepper(nums, solved={}) {
@@ -45,7 +45,29 @@ function memoizationStepper(nums, solved={}) {
 }
 
 function tabulationStepper(nums) {
+    let outcomes_map = new Array(nums.length)
 
+    for(let i = nums.length - 1; i >= 0; i--) {
+        let distance_to_end = nums.length - 1 - i
+        if(nums[i] >= distance_to_end) {
+            outcomes_map[i] = true
+        } else {
+            let position = i;
+            let outcome = false;
+
+            while(position - i <= nums[i]) {
+                if(outcomes_map[position]) {
+                    outcome = true;
+                    break;
+                }
+                position += 1;
+            }
+
+            outcomes_map[i] = outcome;
+        }
+    }
+
+    return outcomes_map[0];
 }
 
 

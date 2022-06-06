@@ -159,11 +159,44 @@ function iterativeMaxAdjacentSum(nums) {
 // Examples:
 //
 // minChange([1, 2, 5], 11)         // => 3, because 5 + 5 + 1 = 11
+// [11, 6, 3]
 // minChange([1, 4, 5], 8))         // => 2, because 4 + 4 = 8
+// [8, 2, 2]
 // minChange([1, 5, 10, 25], 15)    // => 2, because 10 + 5 = 15
+// [15, 3, 2, 2]
 // minChange([1, 5, 10, 25], 100)   // => 4, because 25 + 25 + 25 + 25 = 100
+// [100, 20, 10, 4]
 function minChange(coins, amount) {
+    // initialize array to store solution for every value from 0 - amount
+    let table = new Array(amount + 1)
+    table[0] = 0
+    let curr_amount = 1
 
+    // loop through every smaller amount up to and including amount
+    while(curr_amount <= amount){
+        // loop through every coin
+        for (let i = coins.length - 1; i >= 0; i--) {
+            // allow possibility of not using a coin
+            let num_coins = 0
+
+            while (num_coins * coins[i] <= curr_amount) {
+                let remainder = curr_amount - num_coins * coins[i] 
+
+                // solutions for smaller amounts are already stored in the table
+                // (table filled in left to right)
+                if (!table[curr_amount] || 
+                    table[remainder] + num_coins < table[curr_amount]) {
+                    
+                    // use solution for smaller amounts to solve for curr_amount
+                    table[curr_amount] = table[remainder] + num_coins
+                }
+                num_coins++
+            }
+        }
+        curr_amount += 1;
+    }
+
+    return table[amount];
 }
 
 

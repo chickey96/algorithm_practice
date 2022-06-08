@@ -17,3 +17,7 @@ function climbStairs(n) {
 
     return table[n];
 };
+
+module.exports = {
+    climbStairs
+};

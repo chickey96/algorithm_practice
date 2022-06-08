@@ -2,6 +2,7 @@ const chai = require("chai");
 const { expect } = chai;
 
 const { stepper, maxNonAdjacentSum, minChange } = require('../lib/problems');
+const { climbStairs } = require('../lib/leet_code_70');
 
 describe("stepper(nums)", () => {
     it("should return a boolean indicating whether it is possible to travel from the start of the array to the end", () => {
@@ -52,7 +53,12 @@ describe("minChange(coins, amount)", () => {
 });
 
 describe("Leet Code #70 - Climbing Stairs", () => {
-    it("https://leetcode.com/problems/climbing-stairs/");
+    it("should return the number of distinct ways to climb n stairs", () => {
+        expect(climbStairs(1)).to.equal(1);
+        expect(climbStairs(3)).to.equal(3);
+        expect(climbStairs(4)).to.equal(5);
+        expect(climbStairs(6)).to.equal(13);
+    });
 });
 
 describe("Leet Code #64 - Minimum Path Sum", () => {

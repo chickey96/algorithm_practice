@@ -3,6 +3,7 @@ const { expect } = chai;
 
 const { stepper, maxNonAdjacentSum, minChange } = require('../lib/problems');
 const { climbStairs } = require('../lib/leet_code_70');
+const { minPathSum } = require('../lib/leet_code_64');
 
 describe("stepper(nums)", () => {
     it("should return a boolean indicating whether it is possible to travel from the start of the array to the end", () => {
@@ -62,5 +63,11 @@ describe("Leet Code #70 - Climbing Stairs", () => {
 });
 
 describe("Leet Code #64 - Minimum Path Sum", () => {
-    it("https://leetcode.com/problems/minimum-path-sum/");
+    it("should return the min sum on a path through the grid", () => {
+        expect(minPathSum([[1, 3, 1], [1, 5, 1], [4, 2, 1]])).to.equal(7);
+        expect(minPathSum([[1, 2, 3], [4, 5, 6]])).to.equal(12);
+        expect(minPathSum([[1, 1, 1], [1, 1, 1]])).to.equal(4);
+        expect(minPathSum([[1, 0, 0], [4, 5, 0]])).to.equal(1);
+        expect(minPathSum([[1]])).to.equal(1);
+    });
 });

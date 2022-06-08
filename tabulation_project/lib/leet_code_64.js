@@ -30,3 +30,7 @@ function minPathSum(grid) {
     return solution_map[0][0];
     
 }
+
+module.exports = {
+    minPathSum
+}
